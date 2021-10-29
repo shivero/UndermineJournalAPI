@@ -19,13 +19,15 @@ namespace UndermineJournalAPI.Mappings
                 .ForMember(dest => dest.item_name, opt => opt.MapFrom(src => src.NameEnus))
                 .ForMember(dest => dest.class_id, opt => opt.MapFrom(src => src.Class))
                 .ForMember(dest => dest.subclass_id, opt => opt.MapFrom(src => src.Subclass))
-                .ForMember(dest => dest.image_url, opt => opt.MapFrom(src => src.Icon))
+                .ForMember(dest => dest.image_url, opt => opt.MapFrom(src => $"https://wow.zamimg.com/images/wow/icons/large/{src.Icon}.jpg"))
                 .ForMember(dest => dest.vendor_buy_price, opt => opt.MapFrom(src => src.Buyfromvendor))
                 .ForMember(dest => dest.vendor_sell_price, opt => opt.MapFrom(src => src.Selltovendor))
                 .ForMember(dest => dest.required_level, opt => opt.MapFrom(src => src.Requiredlevel))
                 .ForMember(dest => dest.required_skill, opt => opt.MapFrom(src => src.Requiredskill))
                 .ForMember(dest => dest.required_side, opt => opt.MapFrom(src => src.Requiredside))
                 .ForMember(dest => dest.other_side_item, opt => opt.MapFrom(src => src.Othersideitem))
+                .ForMember(dest => dest.stack_size, opt => opt.MapFrom(src => src.Stacksize))
+                .ForMember(dest => dest.auctionable, opt => opt.MapFrom(src => src.Auctionable == 0 ? true : false))
                 .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id));
         
 

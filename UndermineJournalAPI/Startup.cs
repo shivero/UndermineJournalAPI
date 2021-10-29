@@ -15,6 +15,9 @@ using Microsoft.EntityFrameworkCore;
 using UndermineJournalAPI.Models.Db;
 using UndermineJournalAPI.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
+
 namespace UndermineJournalAPI
 {
     public class Startup
@@ -29,6 +32,15 @@ namespace UndermineJournalAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configure Compression level
+            services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
+
+            // Add Response compression services
+            services.AddResponseCompression(options =>
+            {
+                options.Providers.Add<GzipCompressionProvider>();
+                options.EnableForHttps = true;
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<newsstandContext>(options => options.UseMySQL("Server=newswire.theunderminejournal.com;Database=newsstand;"));
             services.AddControllers();
@@ -42,6 +54,10 @@ namespace UndermineJournalAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // compression
+            app.UseResponseCompression();
+            app.UseStaticFiles();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -54,6 +70,8 @@ namespace UndermineJournalAPI
             app.UseRouting();
 
             app.UseAuthorization();
+            
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -32,12 +32,12 @@ namespace UndermineJournalAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ItemDTO> GetItem(string searchPhrase)
+        public IEnumerable<TblDbcitem> GetItem(string searchPhrase)
         {
             var rng = new Random();
 
             var list = _repository.GetItemsByName(searchPhrase, "enus");
-            
+            return list;
             //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             //{
             //    Date = DateTime.Now.AddDays(index),
