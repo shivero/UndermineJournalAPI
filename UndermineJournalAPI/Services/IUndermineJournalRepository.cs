@@ -8,6 +8,6 @@ namespace UndermineJournalAPI.Services
     public interface IUndermineJournalRepository
     {
         IEnumerable<TblDbcitem> GetItemsByName(string searchPhrase, string locale);
-        TblItemHistoryDaily GetItemDailyHistory(int itemId);
+        IEnumerable<TblItemHistoryDaily> GetItemDailyHistory(int itemId, int realmId);
     }
 }

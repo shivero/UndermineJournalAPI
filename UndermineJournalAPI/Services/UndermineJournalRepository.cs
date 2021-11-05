@@ -25,9 +25,18 @@ namespace UndermineJournalAPI.Services
             return results;
         }
 
-        public TblItemHistoryDaily GetItemDailyHistory(int itemId)
+        public IEnumerable<TblItemHistoryDaily> GetItemDailyHistory(int itemId, int realmId)
         {
-            throw new NotImplementedException();
+            if (realmId == 0)
+            {
+                throw new ArgumentException("You have not selected realm, id: 0");
+            }
+            if (itemId == 0)
+            {
+                throw new ArgumentException("Item id value 0");
+            }
+            var dailyHistory = _context.TblItemHistoryDailies.Where(w => w.Item == itemId && w.House == realmId).ToList();
+            return dailyHistory;
         }
 
     }

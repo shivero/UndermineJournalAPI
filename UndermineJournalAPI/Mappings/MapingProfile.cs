@@ -11,6 +11,7 @@ namespace UndermineJournalAPI.Mappings
     {
         public MapingProfile()
         {
+            //Item
             CreateMap<TblDbcitem, ItemDTO>()
                 .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
                 // tu będzie conditional zależny od locale
@@ -29,7 +30,20 @@ namespace UndermineJournalAPI.Mappings
                 .ForMember(dest => dest.stack_size, opt => opt.MapFrom(src => src.Stacksize))
                 .ForMember(dest => dest.auctionable, opt => opt.MapFrom(src => src.Auctionable == 0 ? true : false))
                 .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id));
-        
+
+            // Item daily history
+            CreateMap<TblItemHistoryDaily, ItemHistoryDailyDTO>()
+                .ForMember(dest => dest.itemId, opt => opt.MapFrom(src => src.Item))
+                .ForMember(dest => dest.realmId, opt => opt.MapFrom(src => src.House))
+                .ForMember(dest => dest.date, opt => opt.MapFrom(src => src.When))
+                .ForMember(dest => dest.price_min, opt => opt.MapFrom(src => src.Pricemin))
+                .ForMember(dest => dest.price_avg, opt => opt.MapFrom(src => src.Priceavg))
+                .ForMember(dest => dest.price_max, opt => opt.MapFrom(src => src.Pricemax))
+                .ForMember(dest => dest.price_start, opt => opt.MapFrom(src => src.Pricestart))
+                .ForMember(dest => dest.price_end, opt => opt.MapFrom(src => src.Priceend))
+                .ForMember(dest => dest.quantity_min, opt => opt.MapFrom(src => src.Quantitymin))
+                .ForMember(dest => dest.quantity_max, opt => opt.MapFrom(src => src.Quantitymax))
+                .ForMember(dest => dest.quantity_avg, opt => opt.MapFrom(src => src.Quantityavg));
 
         }
     }

@@ -27,14 +27,24 @@ namespace UndermineJournalAPI.Controllers
         }
 
         [HttpGet]
-        [Route("get-item")]
-        public IEnumerable<ItemDTO> GetItem(string searchPhrase)
+        [Route("get-items")]
+        public IEnumerable<ItemDTO> GetItems(string searchPhrase)
         {
 
             _logger.LogInformation($"Starting search for item name: {searchPhrase}", searchPhrase);
             var list = _repository.GetItemsByName(searchPhrase, "enus").ToList();
             _logger.LogInformation($"Found {list.Count} items");
             return _mapper.Map<IEnumerable<ItemDTO>>(list);
+        }
+
+        [HttpGet]
+        [Route("daily-history")]
+        public IEnumerable<ItemHistoryDailyDTO> GetItemHistoryDaily(int itemId, int realmId)
+        {
+            _logger.LogInformation($"Request daily history for item: {itemId} on realm {realmId}");
+            var result = _repository.GetItemDailyHistory(itemId, realmId);
+
+            return _mapper.Map<IEnumerable<ItemHistoryDailyDTO>>(result);
         }
     }
 }
