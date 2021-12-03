@@ -16,10 +16,10 @@ namespace UndermineJournalAPI.Controllers
     [ApiController]
     public class ItemController : Controller
     {
-        private readonly IUndermineJournalRepository _repository;
+        private readonly IItemRepository _repository;
         private readonly ILogger<ItemController> _logger;
         private readonly IMapper _mapper;
-        public ItemController(IUndermineJournalRepository context, ILogger<ItemController> logger, IMapper mapper)
+        public ItemController(IItemRepository context, ILogger<ItemController> logger, IMapper mapper)
         {
             _repository = context;
             _logger = logger;

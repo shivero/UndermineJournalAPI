@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UndermineJournalAPI.Models.Db;
 namespace UndermineJournalAPI.Services
 {
-    public interface IUndermineJournalRepository
+    public interface IItemRepository
     {
         IEnumerable<TblDbcitem> GetItemsByName(string searchPhrase, string locale);
         IEnumerable<TblItemHistoryDaily> GetItemDailyHistory(int itemId, int realmId);

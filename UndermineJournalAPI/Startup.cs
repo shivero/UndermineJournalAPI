@@ -48,7 +48,15 @@ namespace UndermineJournalAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UndermineJournalAPI", Version = "v1" });
             });
-            services.AddScoped<IUndermineJournalRepository, UndermineJournalRepository>();
+
+            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+            }));
+
+
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IRealmRepository, RealmRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +78,11 @@ namespace UndermineJournalAPI
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
+           
+            // CORS POLICY
+            app.UseCors("ApiCorsPolicy");
+
 
 
             app.UseEndpoints(endpoints =>

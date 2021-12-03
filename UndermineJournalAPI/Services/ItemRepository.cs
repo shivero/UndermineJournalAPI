@@ -6,11 +6,11 @@ using UndermineJournalAPI.Models.Db;
 
 namespace UndermineJournalAPI.Services
 {
-    public class UndermineJournalRepository : IUndermineJournalRepository
+    public class ItemRepository : IItemRepository
     {
         private readonly newsstandContext _context;
         
-        public UndermineJournalRepository(newsstandContext context)
+        public ItemRepository(newsstandContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
