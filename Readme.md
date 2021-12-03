@@ -6,7 +6,7 @@ This project aims get data directly from Newswire DB via Entity Framework Core a
 
 **As of 21 November 2021 Newswire public database has been discountined, so host newswire.theunderminejournal.com is not available anymore**
 
-## Getting started
+## :rocket: Getting started
 Open `UndermineJournalAPI.sln` in Visual Studio, run & build project. Host address is `http://localhost:44913`.
 By default browser page will not start automatically on project run - if you want to alter this behaviour, right click project, select properties => Debug and check "Launch Browser" option)
 
@@ -25,5 +25,5 @@ Endpoints are available throught structure: {host}/api/[controller]/{actioname} 
     - `GetItemHistoryDaily(int itemId, int realmId)` - /daily-history/ - return list of auction house data (prices) in each day
 
 
-## License
+## :memo: License
 This project is licensed under MIT license.
