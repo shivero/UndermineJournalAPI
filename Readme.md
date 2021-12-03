@@ -15,7 +15,7 @@ By default browser page will not start automatically on project run - if you wan
 2. Swagger API docs page are *disabled* by default
 3. Database models are mapped to Data Models with Automapper mappings
 4. Database context has been automatically created from newsstand schema
-## API Structure
+## :zap: API Structure
 Endpoints are available throught structure: {host}/api/[controller]/{actioname} ex. `https://localhost:44913/api/items/getitems?searchPhrase=burning`
 
 - RealmController/
