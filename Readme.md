@@ -10,7 +10,7 @@ This project aims get data directly from Newswire DB via Entity Framework Core a
 Open `UndermineJournalAPI.sln` in Visual Studio, run & build project. Host address is `http://localhost:44913`.
 By default browser page will not start automatically on project run - if you want to alter this behaviour, right click project, select properties => Debug and check "Launch Browser" option)
 
-## Configuration
+## :wrench: Configuration
 1. API allows request from http://localhost:3000 (url of React Next.js App) by enabling cors policy defined in `Startup.cs` via **ApiCorsPolicy**
 2. Swagger API docs page are *disabled* by default
 3. Database models are mapped to Data Models with Automapper mappings
