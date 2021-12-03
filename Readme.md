@@ -22,7 +22,7 @@ Endpoints are available throught structure: {host}/api/[controller]/{actioname} 
     - `GetRealms((string query, string region)` - /get-realm/ - lists all realms found by query in specifiec region. 
 - ItemController/
     - `GetItems(string searchPhrase)` - /get-items/ - return all items found by name search query
-    - `GetItemHistoryDaily(int itemId, int realmId)` - /daily-history/ - return list of auction house data in each day
+    - `GetItemHistoryDaily(int itemId, int realmId)` - /daily-history/ - return list of auction house data (prices) in each day
 
 
 ## License
