@@ -7,7 +7,7 @@ This project aims get data directly from Newswire DB via Entity Framework Core a
 **As of 21 November 2021 Newswire public database has been discountined, so host newswire.theunderminejournal.com is not available anymore**
 
 ## Getting started
-Open `UndermineJournalAPI.sln` in Visual Studio, run project and then open `http://localhost:44913`.
+Open `UndermineJournalAPI.sln` in Visual Studio, run & build project. Host address is `http://localhost:44913`.
 By default browser page will not start automatically on project run - if you want to alter this behaviour, right click project, select properties => Debug and check "Launch Browser" option)
 
 ## Configuration
@@ -16,6 +16,8 @@ By default browser page will not start automatically on project run - if you wan
 3. Database models are mapped to Data Models with Automapper mappings
 4. Database context has been automatically created from newsstand schema
 ## API Structure
+Endpoints are available throught structure: {host}/api/[controller]/{actioname} ex. `https://localhost:44913/api/items/getitems?searchPhrase=burning`
+
 - RealmController/
     - `GetRealms((string query, string region)` - /get-realm/ - lists all realms found by query in specifiec region. 
 - ItemController/
